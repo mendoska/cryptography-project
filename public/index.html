@@ -7,6 +7,43 @@
     <title>Document</title>
 </head>
 <body>
-    
+<h4>Generate a prime a number</h4>
+
+<!-- will create prime number on click -->
+<button onclick="generatePrime()">Submit</button>
+
+
+
+<!-- JS -->
+<script>
+
+
+let generatePrime = (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setError(null);
+
+        axios.get("http://localhost:5678/" )
+        .then(function(response){
+            console.log("Generating prime number...");
+            setLoading(false);
+            setError(false);
+            setResponse(response.data);
+            setData(response.data);
+            console.log("The response data is :");
+            console.dir(response.data);
+        })
+        .catch(function(error){
+            setLoading(false);
+            setError(true);
+            setResponse(error);
+        })
+        .then(function(){
+            //always executes
+        })
+    }
+</script>
+
+
 </body>
 </html>

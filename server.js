@@ -2,9 +2,10 @@
 const express = require('express');
 const app = express ();
 const bodyParser = require ('body-parser');
-
-
+//https://nodejs.org/api/crypto.html#crypto
 const crypto = require('crypto');
+const axios = require ('axios');
+const { error } = require('console');
 
 //function to convert hex to binary
 function hexToBinary(hex) {
@@ -25,30 +26,38 @@ function hexToBinary(hex) {
       const buffer = Buffer.from(prime);
       const hexString = buffer.toString('hex');
       const binaryString = hexToBinary(hexString);
-      console.log(binaryString);
+     // console.log(binaryString);
       console.log(binaryString.length);
     }
   });
-// //used to generate large number
-// //https://www.npmjs.com/package/node-forge
-// const forge = require('node-forge');
-
-
-// //generates prime 256 - binary and its length 
-// const bits = 256;
-
-// forge.prime.generateProbablePrime(bits, (err, num) => {
-//   if (err) {
-//     console.error(err);
-//   } else {
-//     const binaryString = (num.toString(2));
-//     console.log(binaryString);
-//     console.log(binaryString.length)
-//   }
-// });
 
 app.use (bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+ app.get('/', function(req, res){
+    if (error) throw error;
+    var obj ={};
+    crypto.generatePrime(256, (err, prime) => {
+        if (error) {
+          console.error(error);
+        } else {
+            //had an issue with array buffer need to create this variable
+          const buffer = Buffer.from(prime);
+          const hexString = buffer.toString('hex');
+          const binaryString = hexToBinary(hexString);
+         // console.log(binaryString);
+          console.log(binaryString.length);
+          obj.number = binaryString;
+          res.status(200).send({obj});
+        }
+      });
+
+    
+
+
+ });
+
+
 
 
 app.listen(5678); //start the server
