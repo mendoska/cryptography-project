@@ -12,6 +12,11 @@ const crypto = require('crypto');
 const axios = require ('axios');
 const { error } = require('console');
 
+ app.use(bodyParser.json());
+ app.use(bodyParser.urlencoded({extended: false}));
+
+ app.use(express.static('./public'))
+
 
 
 app.use (bodyParser.json());
@@ -28,7 +33,6 @@ CREATE SYMMETRIC KEY
 ENCRYPT KEY
 ********************
 */
-
 
 //creating a 256-bit symmetric key for AES Encryption
 //.randomBytes generates 
