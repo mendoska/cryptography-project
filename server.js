@@ -22,6 +22,10 @@ const { error } = require('console');
 app.use (bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+
+
+
+
 //I will change this to input
 const plaintext = "Hello World!";
 console.log("The message to be encrypted: " + plaintext);
@@ -37,7 +41,7 @@ ENCRYPT KEY
 //creating a 256-bit symmetric key for AES Encryption
 //.randomBytes generates 
 const symmetricKey = crypto.randomBytes(32);
-console.log ("The symmetric key is:  "+ symmetricKey);
+//console.log ("The symmetric key is:  "+ symmetricKey);
 
 //creating an IV for the .createCipherIV 
 //this is for CBC -> Cipher Block Chaining
@@ -52,7 +56,7 @@ const cipher = crypto.createCipheriv('aes-256-cbc', symmetricKey, iv);
 let encrypted = cipher.update(plaintext, 'utf8','hex');
 encrypted += cipher.final('hex');
 
-console.log("The encrypted text is: "+ encrypted);
+//console.log("The encrypted text is: "+ encrypted);
 
 /*
 ********************
@@ -104,7 +108,6 @@ const decryptedSymmetricKey = crypto.privateDecrypt(
   Buffer.from(dataToSend.encryptedSymmeticKey, 'base64')
 );
 
-
 /*
 DECRYPT THE MESSAGE
 USE AES-256
@@ -117,6 +120,6 @@ const decipher = crypto.createDecipheriv('aes-256-cbc', decryptedSymmetricKey,Bu
 let decrypted = decipher.update(dataToSend.encryptedMessage, 'hex', 'utf8');
 decrypted = decipher.final('utf8');
 
-console.log("The message is " + decrypted);
+//console.log("The message is " + decrypted);
 app.listen(5678); //start the server
 console.log('Server is running...');
