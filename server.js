@@ -30,6 +30,16 @@ app.post('/', function(req,res){
   //receiving message to encrypt
   var plaintxt = req.body.plaintxt;
   console.log("The message to be encrypted: " + plaintxt);
+   var rsp_obj= {}
+  // if (error) {
+  //   rsp_obj.plaintxt = plaintxt;
+  //   rsp_obj.message = 'error';
+  //   return res.status(404).send(rsp_obj);
+  // } else {
+  //   rsp_obj.record_id = record_id;
+  //   rsp_obj.message = 'Message ready to encrypt';
+    return res.status(200).send(rsp_obj);
+  // }
 });
 
 

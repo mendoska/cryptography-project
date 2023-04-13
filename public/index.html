@@ -40,7 +40,7 @@
             },
             success:function(response){
             $("#mydiv").text(response.message);
-            console.log("The message to be encrypted: " + plaintxt);
+            console.log("The message to be encrypted: " + JSON.stringify(plaintxt_val));
             $("#mydiv").append("message was sent to the back");
             },
             error:function(xhr){
