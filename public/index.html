@@ -16,13 +16,29 @@
     <h2>Enter the message you'd like to encrypt</h2>
 
     <form>
-        <textarea>Message...</textarea>
-        <button>Submit</button>
+        <textarea id="plaintxt">Message...</textarea>
+        <button onclick ="sendEncryption()">Submit</button>
+        <br>
+        <br>
+
+        <div id="mydiv" name="mydiv"></div>        
     </form>
-
-
 <!-- JS -->
 <script>
+    function sendEncryption(){
+        var plaintxt = $("#plaintxt").val();
+        $.ajax({
+            url:"/encrypt",
+            type: "",
+            data:{},
+            success:function(response){
+
+            },
+            error:function(xhr){
+                
+            }
+        });
+    }
 
 </script>
 
