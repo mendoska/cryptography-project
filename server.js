@@ -24,6 +24,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 
+//create function to received front end 
+
+app.post('/?plaintxt=:plaintxt', function(req,res){
+  //receiving message to encrypt
+  var plaintxt = req.body.plaintxt;
+  console.log("The message to be encrypted: " + plaintxt);
+});
+
 
 
 //I will change this to input
