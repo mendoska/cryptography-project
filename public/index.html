@@ -33,13 +33,14 @@
     function sendEncryption(){
         var plaintxt_val = $("#plaintxt").val();
         $.ajax({
-            url:"/?plaintxt="+plaintxt_val,
+            url:'/',
             type: "post",
             data:{
                 plaintxt:plaintxt_val
             },
             success:function(response){
             $("#mydiv").text(response.message);
+            console.log("The message to be encrypted: " + plaintxt);
             $("#mydiv").append("message was sent to the back");
             },
             error:function(xhr){
