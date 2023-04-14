@@ -31,7 +31,30 @@ FORM STYLING
     font-weight: bold;
     color:black;
   }
-  
-  #form-title{
+
+
+.curved {
+    background: #0bd3d3;
+    text-align:center;
+}
+
+
+.curved svg{
+    display: block;
+}
+
+.curved.upper{
+background:white;    
+}
+
+
+.curved h2{
     text-align: center;
-  }
+    color:white;
+    margin-top:0;
+}
+
+h2{
+    margin-top:0;
+}
+  
