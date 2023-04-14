@@ -3,3 +3,35 @@
 * {
     font-family:"Poppins", sans-serif; 
 }
+
+/*
+FORM STYLING
+*/
+
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top:50px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color:  white; 
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color:black;
+  }
+  
+  #form-title{
+    text-align: center;
+  }

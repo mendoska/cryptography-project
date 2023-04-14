@@ -18,16 +18,19 @@
 </head>
 <body>
     
-    <h2>Enter the message you'd like to encrypt</h2>
+    <h2 id ="form-title">Enter the message you'd like to encrypt</h2>
 
-
+    <div class = "form-container">
+        <form class = "form-styling">
+        <div class = "form-group">
         <input type="text" id="plaintxt" name="plaintxt"><br><br>
-        <button onclick ="sendEncryption()">Submit</button>
         <br>
-        <br>
-
+        </div>
         <div id="mydiv" name="mydiv"></div>        
+        </form>
+        <button onclick ="sendEncryption()">Submit</button>
 
+    </div>
 <!-- JS -->
 <script>
     function sendEncryption(){
@@ -42,7 +45,7 @@
             $("#mydiv").text(response.message);
             console.log("The message to be encrypted: " + response.plaintxt);
             console.log("The message encrypted: " + response.encrypted_message);
-            console.log("The message encrypted: " + response.decrypted_message);
+            console.log("The message decrypted: " + response.decrypted_message);
             $("#mydiv").append("message was sent to the backend");
             },
             error:function(xhr){
