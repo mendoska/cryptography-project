@@ -33,6 +33,9 @@ FORM STYLING
   }
 
 
+/*
+curved svg styling
+*/  
 .curved {
     background: #0bd3d3;
     text-align:center;
@@ -60,7 +63,4 @@ background:black;
     margin-top:0;
 }
 
-h2{
-    margin-top:0;
-}
-  
+

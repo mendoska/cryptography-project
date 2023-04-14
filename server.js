@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.post('/', function (req, res) {
   //receiving message to encrypt
   var plaintxt = req.body.plaintxt;
-  console.log("The message to be encrypted: " + plaintxt);
+  console.log("Alice's secret message to bob: " + plaintxt);
   var rsp_obj = {}
 
   // Check if the resource was found
@@ -51,7 +51,7 @@ app.post('/', function (req, res) {
   //creating a 256-bit symmetric key for AES Encryption
   //.randomBytes generates 
   const symmetricKey = crypto.randomBytes(32);
-  //console.log ("The symmetric key is:  "+ symmetricKey);
+  console.log ("Alice's secret key:  "+ symmetricKey);
 
   //creating an IV for the .createCipherIV 
   //this is for CBC -> Cipher Block Chaining
@@ -104,6 +104,7 @@ JSON.stringify(encrypted);
   //using rsa protocols
   const encryptedSymmeticKey = crypto.publicEncrypt(publicKey, symmetricKey);
 
+  console.log("Alice just used Bob's public key to encrypt her secret key so he can decrypt it");
   //creating an object for data to send
   const dataToSend = {
     //converting obj to string
@@ -112,6 +113,9 @@ JSON.stringify(encrypted);
     //sending IV that was created for first round of encryption
     iv: iv.toString('base64'),
   };
+  // console.log(dataToSend.encryptedMessage);
+
+  console.log("Bob receives the following: the encrypted secret key, the encrypted message, and the iv to decrypt the message");
 
 
   // At the recipient's end, decrypt the symmetric key using the recipient's private key
@@ -120,7 +124,7 @@ JSON.stringify(encrypted);
     //creates a buffer object from the base64-encoded string 
     Buffer.from(dataToSend.encryptedSymmeticKey, 'base64')
   );
-
+console.log("Now that bob has this information he is using his private key to decrypt the secret key");
   /*
   DECRYPT THE MESSAGE
   USE AES-256
@@ -130,6 +134,7 @@ JSON.stringify(encrypted);
   //note to self -> read more on documentaton of buffer
   const decipher = crypto.createDecipheriv('aes-256-cbc', decryptedSymmetricKey, Buffer.from(dataToSend.iv, 'base64'));
   //look at encryped has similar process
+  console.log("Bob now uses the IV and the decryped secret key to decipher the message  ");
   let decrypted = decipher.update(dataToSend.encryptedMessage, 'hex', 'utf8');
   decrypted += decipher.final('utf8');
 
