@@ -44,7 +44,13 @@ FORM STYLING
 }
 
 .curved.upper{
-background:white;    
+background:black;    
+}
+
+.curved.upper h3{
+    text-align:center;
+    color:white;
+    margin-top:0;
 }
 
 
