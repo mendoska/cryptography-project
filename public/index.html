@@ -103,6 +103,9 @@
             console.log("Bob's public key \n" +response.bobPublicKey);
             console.log("Bob's private key \n" +response.bobPrivateKey);
             $(".bob").append("<br>Bob receives the following: the encrypted secret key, the encrypted message, and the iv to decrypt the message")
+            $(".bob").append("<br>Bob now uses the IV and the decryped secret key to decipher the message ");
+            $(".bob").append("<br>Finally Bob receives the decrypted message " + response.decrypted_message);
+
             },
             error:function(xhr){
             $("#mydiv").text('error: ' + xhr);
