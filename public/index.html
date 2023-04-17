@@ -65,6 +65,9 @@
             <h3>Bob</h3>
         </div>
       </div>
+      <div id ="nextButton">
+
+      </div>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#db3eb1" fill-opacity="1"
     d="M0,192L48,170.7C96,149,192,107,288,101.3C384,96,480,128,576,170.7C672,213,768,267,864,277.3C960,288,1056,256,1152,218.7C1248,181,1344,139,1392,117.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
 
@@ -94,19 +97,83 @@
             console.log("The message encrypted: " + response.encrypted_message);
             console.log("The message decrypted: " + response.decrypted_message);
             $("#mydiv").append("message was sent to the backend<br>" );
-            $(".alice").append("Alice's secret message: " + response.plaintxt);
-            $(".alice").append("<br>Alice's secret key: " + response.aliceSecretKey);
-            $(".alice").append("<br>Alice uses an IV, her secret key and AES to encrypt her message: <br>");
-            $(".alice").append("Alice's encrypted text " + response.encrypted_message);
-            //encrypted secret key is long so I substring it here
-            $(".alice").append("<br> Alice uses Bob's public key to encrypt her secret key, so he can decrypt it, check console log. " );
-            console.log ("Alice's encrypted secret key " + response.aliceEncryptedSecretKey)
-            $(".bob").append("<br>Bob's pair of Public & Private Key, check console log")
-            console.log("Bob's public key \n" +response.bobPublicKey);
-            console.log("Bob's private key \n" +response.bobPrivateKey);
-            $(".bob").append("<br>Bob receives the following: the encrypted secret key, the encrypted message, and the iv to decrypt the message")
-            $(".bob").append("<br>Bob now uses the IV and the decryped secret key to decipher the message ");
-            $(".bob").append("<br>Finally Bob receives the decrypted message " + response.decrypted_message);
+            
+            //creating a reference to the elements I'm pushing to
+            var aliceElement = $('.alice');
+            var bobElement = $('.bob');
+
+            //creating an array 
+
+            //lines array
+            var lines = []; 
+
+            //$(".alice").append("Alice's secret message: " + response.plaintxt);
+            // $(".alice").append("<br>Alice's secret key: " + response.aliceSecretKey);
+            // $(".alice").append("<br>Alice uses an IV, her secret key and AES to encrypt her message: <br>");
+            // $(".alice").append("Alice's encrypted text " + response.encrypted_message);
+            // //encrypted secret key is long so I substring it here
+            // $(".alice").append("<br> Alice uses Bob's public key to encrypt her secret key, so he can decrypt it, check console log. " );
+            // console.log ("Alice's encrypted secret key " + response.aliceEncryptedSecretKey)
+            // $(".bob").append("<br>Bob's pair of Public & Private Key, check console log")
+            // console.log("Bob's public key \n" +response.bobPublicKey);
+            // console.log("Bob's private key \n" +response.bobPrivateKey);
+            // $(".bob").append("<br>Bob receives the following: the encrypted secret key, the encrypted message, and the iv to decrypt the message")
+            // $(".bob").append("<br>Bob now uses the IV and the decryped secret key to decipher the message ");
+            // $(".bob").append("<br>Finally Bob receives the decrypted message " + response.decrypted_message);
+            //adding button after success
+
+
+            // Create a new button element
+            var button = document.createElement('button');
+            
+            // Set the button text and attributes
+            button.textContent = 'Next';
+            button.setAttribute('id', 'next-button');
+            
+            // Add the button to the page
+            var container = document.getElementById('nextButton');
+            container.appendChild(button);
+            
+            var counter =0;
+            button.addEventListener('click',function(){
+                counter++;
+                console.log("Button clicked!!")
+                console.log(counter);
+                //super inefficient but working for now
+                if (counter ==1){
+                $(".alice").append("Alice's secret message: " + response.plaintxt);
+                }
+                if (counter ==2 ){
+                $(".alice").append("<br>Alice's secret key: " + response.aliceSecretKey);
+                }
+                if (counter ==3){
+                 $(".alice").append("<br>Alice's encrypted text " + response.encrypted_message);
+
+                }
+                if (counter ==4){
+                 $(".bob").append("<br>Bob's pair of Public & Private Key, check console log");
+                               
+                console.log("Bob's public key \n" +response.bobPublicKey);
+                console.log("Bob's private key \n" +response.bobPrivateKey);
+                }
+                if (counter ==5){
+                $(".alice").append("<br> Alice uses Bob's public key to encrypt her secret key, so he can decrypt it, check console log. " );
+                console.log ("Alice's encrypted secret key " + response.aliceEncryptedSecretKey)
+                }
+                if (counter ==6){
+                $(".bob").append("<br>Bob receives the following: the encrypted secret key, the encrypted message, and the iv to decrypt the message")
+                }
+                if (counter ==7){
+                $(".bob").append("<br>Bob now uses the IV and the decryped secret key to decipher the message ");
+
+                }
+                if (counter ==8){
+                $(".bob").append("<br>Finally Bob receives the decrypted message " + response.decrypted_message);
+
+                }
+
+
+            });
 
             },
             error:function(xhr){
