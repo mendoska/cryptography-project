@@ -42,6 +42,7 @@ curved svg styling
 }
 
 
+
 .curved svg{
     display: block;
 }
@@ -63,4 +64,6 @@ background:black;
     margin-top:0;
 }
 
-
+.secondCurve{
+  background:#db3eb1;;
+}

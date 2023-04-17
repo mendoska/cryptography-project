@@ -52,7 +52,9 @@ app.post('/', function (req, res) {
   console.log ("Alice's secret key:  "+ symmetricKey);
 
   //adding to response object to output to screen
+  
   rsp_obj.aliceSecretKey = symmetricKey;
+  
 
   //creating an IV for the .createCipherIV 
   //this is for CBC -> Cipher Block Chaining
