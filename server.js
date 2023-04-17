@@ -1,6 +1,11 @@
 /*
+***************************************************************************
 Lots of helps from //https://nodejs.org/api/crypto.html#crypto
 Great built in library from Node.js and good documentation
+
+GITHUB:
+https://github.com/mendoska/cryptography-project
+***************************************************************************
 */
 
 //node modules
