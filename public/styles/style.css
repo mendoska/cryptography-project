@@ -69,10 +69,10 @@ background:black;
 }
 
 
-.secondCurve h3{
-  background:#db3eb1;
+.secondCurve h2{
   text-align:center;
   color:white;
+  text-decoration: underline;
 }
 
 
@@ -82,8 +82,12 @@ background:black;
 
 .col-sm-6.alice {
 color:white;
+font-size:18px;
+text-align: center;
+padding-left:15px;
 }
 
 .col-sm-6.bob {
   color:white;
+  font-size:18px;
   }
