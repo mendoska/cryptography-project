@@ -51,10 +51,8 @@ app.post('/', function (req, res) {
   const symmetricKey = crypto.randomBytes(32);
   console.log ("Alice's secret key:  "+ symmetricKey);
 
-  //adding to response object to output to screen
-  
-  rsp_obj.aliceSecretKey = symmetricKey;
-  
+  //adding to response object to output to screen in strong format
+  rsp_obj.aliceSecretKey = symmetricKey.toString('base64');
 
   //creating an IV for the .createCipherIV 
   //this is for CBC -> Cipher Block Chaining
@@ -69,7 +67,7 @@ app.post('/', function (req, res) {
   let encrypted = cipher.update(plaintxt, 'utf8', 'hex');
   encrypted += cipher.final('hex');
 
-JSON.stringify(encrypted);
+
 
   console.log("The encrypted text is: " + encrypted);
   rsp_obj.encrypted_message = encrypted;

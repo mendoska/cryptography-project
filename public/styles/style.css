@@ -79,3 +79,7 @@ background:black;
 .secondCurve svg{
  display:block;
 }
+
+.col-sm-6.alice {
+color:white;
+}

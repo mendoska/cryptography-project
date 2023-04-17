@@ -51,7 +51,7 @@
 
 <div class ="secondCurve">
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-6 alice">
             <h3>Alice</h3>
 
         </div>
@@ -59,7 +59,7 @@
             <h3>Image</h3>
 
         </div> -->
-        <div class="col-sm-6">
+        <div class="col-sm-6 bob">
             <h3>Bob</h3>
         </div>
       </div>
@@ -75,9 +75,10 @@
     
     
     //used to keep track of function
-    let counter = 0;
+   // let counter = 0;
+
     function sendEncryption(){
-        counter++;
+
         var plaintxt_val = $("#plaintxt").val();
         $.ajax({
             url:'/',
@@ -91,14 +92,10 @@
             console.log("The message encrypted: " + response.encrypted_message);
             console.log("The message decrypted: " + response.decrypted_message);
             $("#mydiv").append("message was sent to the backend<br>" );
-           
-            if (counter == 1){
-            $("#mydiv").append(response.plaintxt+"<br>");
-            }
-            if (counter ==2){
-            $("#mydiv").append("2"+response.aliceSecretKey);
-            }
-
+            $(".alice").append("Alice's secret message: " + response.plaintxt);
+            $(".alice").append("<br>Alice's secret key: " + response.aliceSecretKey);
+            $(".alice").append("<br>Alice uses an IV, here secret key and AES to encrypt her message: <br>");
+            $(".alice").append("Alice's encrypted text " + response.encrypted_message);
             },
             error:function(xhr){
             $("#mydiv").text('error: ' + xhr);
