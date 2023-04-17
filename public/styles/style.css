@@ -42,7 +42,6 @@ curved svg styling
 }
 
 
-
 .curved svg{
     display: block;
 }
@@ -65,5 +64,18 @@ background:black;
 }
 
 .secondCurve{
-  background:#db3eb1;;
+  background:#db3eb1;
+  text-align:center;
+}
+
+
+.secondCurve h3{
+  background:#db3eb1;
+  text-align:center;
+  color:white;
+}
+
+
+.secondCurve svg{
+ display:block;
 }
