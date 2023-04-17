@@ -94,8 +94,15 @@
             $("#mydiv").append("message was sent to the backend<br>" );
             $(".alice").append("Alice's secret message: " + response.plaintxt);
             $(".alice").append("<br>Alice's secret key: " + response.aliceSecretKey);
-            $(".alice").append("<br>Alice uses an IV, here secret key and AES to encrypt her message: <br>");
+            $(".alice").append("<br>Alice uses an IV, her secret key and AES to encrypt her message: <br>");
             $(".alice").append("Alice's encrypted text " + response.encrypted_message);
+            //encrypted secret key is long so I substring it here
+            $(".alice").append("<br> Alice uses Bob's public key to encrypt her secret key, so he can decrypt it, check console log. " );
+            console.log ("Alice's encrypted secret key " + response.aliceEncryptedSecretKey)
+            $(".bob").append("<br>Bob's pair of Public & Private Key, check console log")
+            console.log("Bob's public key \n" +response.bobPublicKey);
+            console.log("Bob's private key \n" +response.bobPrivateKey);
+            $(".bob").append("<br>Bob receives the following: the encrypted secret key, the encrypted message, and the iv to decrypt the message")
             },
             error:function(xhr){
             $("#mydiv").text('error: ' + xhr);

@@ -111,7 +111,7 @@ app.post('/', function (req, res) {
 
   console.log("Alice just used Bob's public key to encrypt her secret key so he can decrypt it");
 
-  rsp_obj.aliceEncryptedSecretKey = encryptedSymmeticKey;
+  rsp_obj.aliceEncryptedSecretKey = encryptedSymmeticKey.toString('base64');
 
   //creating an object for data to send
   const dataToSend = {
