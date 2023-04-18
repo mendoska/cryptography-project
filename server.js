@@ -23,11 +23,12 @@ app.use(express.static('./public'))
 
 
 //create function to received front end 
-
 app.post('/', function (req, res) {
   //receiving message to encrypt
   var plaintxt = req.body.plaintxt;
   console.log("Alice's secret message to bob: " + plaintxt);
+  
+ //response object sent back 
   var rsp_obj = {}
 
   // Check if the resource was found
@@ -83,6 +84,8 @@ app.post('/', function (req, res) {
   //generate a pair of public & private keys for the public key encryption
   //could go up as high as 2048 which is seen as the standard
   //generateKeyPairSync 
+
+  //BOB'S KEYS
   const { publicKey, privateKey } = crypto.generateKeyPairSync('rsa', {
     modulusLength: 2048,
     //formatting to be a string
@@ -107,6 +110,8 @@ app.post('/', function (req, res) {
 
   //encrypting the public key with the symmeticKey 
   //using rsa protocols
+
+  //ALICE ENCRYPTING WITH BOB'S PUBLIC KEY 
   const encryptedSymmeticKey = crypto.publicEncrypt(publicKey, symmetricKey);
 
   console.log("Alice just used Bob's public key to encrypt her secret key so he can decrypt it");
@@ -133,16 +138,19 @@ app.post('/', function (req, res) {
     Buffer.from(dataToSend.encryptedSymmeticKey, 'base64')
   );
 console.log("Now that bob has this information he is using his private key to decrypt the secret key");
+
+
   /*
   DECRYPT THE MESSAGE
   USE AES-256
   the decrypted symmetric key 
   and IV
   */
-  //note to self -> read more on documentaton of buffer
+
   const decipher = crypto.createDecipheriv('aes-256-cbc', decryptedSymmetricKey, Buffer.from(dataToSend.iv, 'base64'));
   //look at encryped has similar process
   console.log("Bob now uses the IV and the decryped secret key to decipher the message  ");
+  
   let decrypted = decipher.update(dataToSend.encryptedMessage, 'hex', 'utf8');
   decrypted += decipher.final('utf8');
 
