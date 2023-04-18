@@ -11,25 +11,22 @@ This is a web app that simulates a Hybrid Cryptographic scheme, a combination of
 
 # About
 
-
-This implementation's overview  
+This implementation's overview:
 
 1. Alice has a secret message she wants to send to Bob. But she wants to keep it private, so she encrypts it using a secret key.
 
-&nbsp; &nbsp; &nbsp; &nbsp; How I did this: server.js line 51 <br>
-&nbsp; &nbsp; &nbsp; &nbsp; `const symmetricKey = crypto.randomBytes(32);`
+
+2. To make sure Bob can decrypt the message, Alice also encrypts the secret key using Bob's public key (RSA). This means only Bob can decrypt her secret key, which he uses to decrypt the message
 
 
+3. Alice sends the encrypted secret key, the encrypted message (AES), and an initialization vector (IV) to Bob.​
 
-2. To make sure Bob can decrypt the message, Alice also encrypts the secret key using Bob's public key. This means only Bob can decrypt the secret key, which he can then use to decrypt the message.
+4. Bob receives the encrypted secret key, encrypted message, and IV. He uses his private key (RSA) to decrypt the secret key.
 
-3. Alice sends the encrypted secret key, the encrypted message, and a random string called an initialization vector (IV) to Bob.
-
-4. Bob receives the encrypted secret key, encrypted message, and IV. He uses his private key to decrypt the secret key.
-
-5. Now that Bob has the secret key, he uses it to decrypt the message using the IV that Alice provided.
+5. Now that Bob has the secret key, he uses it to decrypt (AES) the message using the decrypted secret key and IV that Alice provided.
 
 6. Bob can now read the secret message that Alice sent him!
+
 
 
 # Technologies/Languages Used
@@ -45,6 +42,9 @@ This implementation's overview
 
 ### Displaying information from the backend
 > The dreaded [OBJECT, OBJECT] in Javascript, being able to convert these large encryption as a string, using the .toString('base64') method helped overcome the issue.
+
+### Way to present and explain the flow of the scheme 
+> Creating the Bob & Alice columns and cycling through with Javascript magic 
 
 
 
