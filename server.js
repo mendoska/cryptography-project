@@ -164,5 +164,6 @@ console.log("Now that bob has this information he is using his private key to de
 });
 
 
-app.listen(5678); //start the server
+port = process.env.PORT || 5678
+var listener = app.listen(port); //start the server
 console.log('Server is running...');
