@@ -8,6 +8,9 @@
 
 This is a web app that simulates a Hybrid Cryptographic scheme, a combination of symmetric-key and asymmetric-key encryption. The user is prompted to enter a message they want to send to a recipient. Once the message is sent, there is a "next" button that when pressed will display the order of the operation step by step. 
 
+NOW LIVE ON HEROKU
+
+https://cryptographyproject.herokuapp.com/
 
 # About
 
