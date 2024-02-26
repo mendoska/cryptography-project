@@ -1,7 +1,7 @@
 # Hybrid Cryptographic Scheme 
 ## Alexander Mendoza
 
-![](https://github.com/mendoska/cryptography-project/blob/main/cryptography-demo.gif)
+![](https://github.com/mendoska/cryptography-project/blob/main/cryptography-demo.gif) {:width="300px"}
 
 
 # How To Use
